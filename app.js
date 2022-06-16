@@ -1,3 +1,4 @@
+
 //Start with console
 // console.log("Hello Node");
 
@@ -55,3 +56,40 @@ const server = http.createServer((req, res) => {
 })
 server.listen(3000);
 */
+//Using Express 
+/*
+const express = require('express')
+const app = express()
+
+app.get('/',(req,res)=>{
+    res.send("Hello from express");
+})
+app.listen(3000);
+
+*/
+
+//Functional Approch 
+const errorHandler = error => console.log(error);
+const dataHandler = data => console.log(data.toString());
+
+
+//Node js event loop File System
+const fs = require('fs'); //File System
+const fileName = 'target.txt'
+fs.watch(fileName, ()=> console.log('File Changed!')); // 1. file name 2. callback function 
+
+//make change and save in target.txt file and see change in terminal 
+
+// Async Programming
+fs.readFile(fileName,(error, data)=>{
+    if(error) errorHandler(error)
+    dataHandler(data);
+});
+console.log("async programming");
+// Node readed last console first because readFile take much time 
+
+//You can use readFileSync to read it line by line 
+
+
+//Completed basics of Node.js 
+//Now go for Node.js API development 
